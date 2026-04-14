@@ -33,4 +33,17 @@ object ObjectOrientation extends App{
     def eat(animal: Animal): Unit
   }
 
+  trait philosopher {
+    def ?!(thought: String): Unit // valid method name
+  }
+
+  // single-class inheritance, multi-trait "mixing"
+  class Crocodile extends Animal with Carnivore {
+    override def eat(animal: Animal): Unit = println("I am eating you, Animal!")
+  }
+
+  val aCroc = new Crocodile
+  aCroc.eat(aDog)
+  aCroc eat aDog // infix notation = object method argument, only available for methods with ONE argument
+
 }
